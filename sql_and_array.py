@@ -33,14 +33,12 @@ df2.show(truncate=False)
 
 # COMMAND ----------
 
-display(df2)
+df3 = df.select("name",explode(df.knownLanguages).alias("exp_languages"), "properties.eye", "properties.hair")
+df3.printSchema()
+df3.show(truncate=False)
 
 # COMMAND ----------
 
-df3 = df.select('name', explode(df.properties), explode(df.knownLanguages))
-df2.printSchema()
-df2.show(truncate=False)
-
-# COMMAND ----------
-
-
+df4 = df.select("name", "properties.eye", "properties.hair")
+df4.printSchema()
+df4.show(truncate=False)
